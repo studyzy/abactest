@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 const modelText = `
 [request_definition]
 r = sub, obj, act
@@ -44,27 +46,10 @@ func DefineFunctionWrapper2(args ...interface{}) (interface{}, error) {
 	return bool(DefineFunction2(method)),nil
 }
 
-type User struct {
-	Address  string
-	UserName string
-	CertId   int
-	Type     string //user 、client
-	Group    string //gptn.mediator1 or gptn.mediator2
-	Credit   int    // 信用评分
-
-}
-
-type Obj struct {
-	Type  string //user 、client
-	Group string //gptn.mediator1 or gptn.mediator2
-}
-
-type Act struct {
-	Method int //0 无权限  1 可以发起交易 2 可以执行合约 3  1&2
-}
 
 func main() {
-
+	TestTeacherEnterSchoolGate()
+	fmt.Println("--------")
 	user1 := &User{
 		Address:  "P13VBemDosoqQvQX6XaF84LsZMaRF7smxaF",
 		UserName: "User1",
@@ -85,5 +70,8 @@ func main() {
 	//  用户 palletone  属于 group1 , group2
 	users := []*User{user1, user2}
 	TestTokenPermission(users)
+	fmt.Println("--------")
 	TestContractPermission(users)
+	fmt.Println("--------")
+	TestContractInstallPermission(users)
 }

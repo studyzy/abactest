@@ -12,13 +12,17 @@ type Contract struct {
 	FuncName string
 	Address  string
 }
+func (c *Contract) Owner() string{
+	return c.Creator
+}
 func Init() string{
 	//GroupA能够访问ContractA的方法Fun1,Fun2
 	//GroupB能够访问ContractA的方法Fun3，Fun4
 	//ContractA创建者能够访问ContractA的所有方法
 	ruleA:= "m = (r.sub.Group==\"A\" && (r.obj.FuncName==\"Fun1\"|| r.obj.FuncName==\"Fun2\"))"
-	ruleA+="|| (r.sub.Group==\"B\" && (r.obj.FuncName==\"Fun3\"|| r.obj.FuncName==\"Fun4\"))"
-	ruleA+="|| r.sub.UserName==r.obj.Creator"
+	ruleA+="|| (r.sub.Group==\"B\" && r.obj.FuncName in (\"Fun3\",\"Fun4\"))"
+	ruleA+="|| r.sub.UserName==r.obj.Owner()"
+
 	return ruleA
 }
 func CheckContractPermission(u *User,contractAddr string,function  string) {
