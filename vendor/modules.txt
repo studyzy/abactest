@@ -1,0 +1,14 @@
+# github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible
+github.com/Knetic/govaluate
+# github.com/casbin/casbin v1.9.1
+github.com/casbin/casbin
+github.com/casbin/casbin/model
+github.com/casbin/casbin/effect
+github.com/casbin/casbin/log
+github.com/casbin/casbin/persist
+github.com/casbin/casbin/persist/file-adapter
+github.com/casbin/casbin/rbac
+github.com/casbin/casbin/rbac/default-role-manager
+github.com/casbin/casbin/util
+github.com/casbin/casbin/config
+github.com/casbin/casbin/errors
